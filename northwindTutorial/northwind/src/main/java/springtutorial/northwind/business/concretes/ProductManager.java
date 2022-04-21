@@ -12,6 +12,7 @@ import springtutorial.northwind.core.utilities.results.SuccessDataResult;
 import springtutorial.northwind.core.utilities.results.SuccessResult;
 import springtutorial.northwind.dataAccess.abstracts.ProductDao;
 import springtutorial.northwind.entities.concretes.Product;
+import springtutorial.northwind.entities.dtos.ProductWithCategoryDto;
 
 import java.util.List;
 
@@ -83,5 +84,10 @@ public class ProductManager implements ProductService {
     @Override
     public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
         return new SuccessDataResult<List<Product>>("Data Listelendi",this.productDao.getByNameAndCategory(productName,categoryId));
+    }
+
+    @Override
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return new SuccessDataResult<List<ProductWithCategoryDto>>("Data Arrived",this.productDao.getProductWithCategoryDetails());
     }
 }
